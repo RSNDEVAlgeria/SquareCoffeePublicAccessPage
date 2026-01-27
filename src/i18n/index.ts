@@ -10,7 +10,7 @@ const resources = {
     translation: {
       "Our Selection": "Our Selection",
       "Curated Favorites": "Curated Favorites",
-      "Handcrafted with love...": "Handcrafted with love using the finest ingredients and premium beans sourced from sustainable farms around the world.",
+      "Handcrafted with love": "Handcrafted with love using the finest ingredients and premium beans sourced from sustainable farms around the world.",
       "View Full Menu with Prices": "View Full Menu with Prices",
       "A Glimpse Inside": "A Glimpse Inside",
       "From our cozy reading corners...": "From our cozy reading corners to our sun-drenched patio, every corner is designed for your comfort.",
@@ -37,14 +37,21 @@ const resources = {
       "Menu": "Menu",
       "Gallery": "Gallery",
       "Services": "Services",
-      "Contact": "Contact"
+      "Contact": "Contact",
+      "Drinks": "Drinks",
+      "Food": "Food",
+      "Discover our carefully curated selection of premium coffees and food":"Discover our carefully curated selection of premium coffees and food",
+      "Where every cup tells a story":"Where every cup tells a story",
+      "Explore Menu":"Explore Menu",
+      "Book an Event":"Book an Event",
+      "Inquire About Hosting":"Inquire About Hosting"
     }
   },
   ar: {
     translation: {
       "Our Selection": "اختيارنا",
       "Curated Favorites": "المفضلات المختارة",
-      "Handcrafted with love...": "مصنوعة بحب باستخدام أفضل المكونات وفاصولياء البن الممتازة المصدرة من مزارع مستدامة حول العالم.",
+      "Handcrafted with love": "مصنوعة بحب باستخدام أفضل المكونات وفاصولياء البن الممتازة المصدرة من مزارع مستدامة حول العالم.",
       "View Full Menu with Prices": "عرض القائمة الكاملة مع الأسعار",
       "A Glimpse Inside": "نظرة خاطفة داخل",
       "From our cozy reading corners...": "من أركان القراءة المريحة إلى التراس المشمس، كل زاوية مصممة لراحتك.",
@@ -71,7 +78,14 @@ const resources = {
       "Menu": "القائمة",
       "Gallery": "المعرض",
       "Services": "الخدمات",
-      "Contact": "التواصل"
+      "Contact": "التواصل",
+      "Drinks": "المشروبات",
+      "Food": "المأكولات",
+      "Discover our carefully curated selection of premium coffees and food":"اكتشف مجموعتنا المختارة بعناية من أجود أنواع القهوة والأطعمة",
+      "Where every cup tells a story":"حيث يحكي كل كوب قصة",
+      "Explore Menu":"استكشاف القائمة",
+      "Book an Event":"احجز موعدا",
+      "Inquire About Hosting":"استفسر عن خدمات الاستضافة"
     }
   },
   fr: {
@@ -105,7 +119,14 @@ const resources = {
       "Menu": "Menu",
       "Gallery": "Galerie",
       "Services": "Services",
-      "Contact": "Contact"
+      "Contact": "Contact",
+      "Drinks": "Boissons",
+      "Food": "Nourriture",
+      "Discover our carefully curated selection of premium coffees and food":"Découvrez notre sélection soigneusement choisie de cafés et de produits alimentaires haut de gamme.",
+      "Where every cup tells a story":"Là où chaque tasse raconte une histoire",
+      "Explore Menu":"Explorer le menu",
+      "Book an Event":"Réservez un événement",
+      "Inquire About Hosting":"Renseignez-vous sur les services d'hébergement"
     }
   }
 };

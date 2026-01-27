@@ -101,7 +101,7 @@ const ServicesSection = () => {
             href="#contact"
             className="inline-flex items-center justify-center px-8 py-4 bg-primary text-primary-foreground font-medium rounded-lg hover:bg-primary/90 transition-all duration-300 hover:scale-105"
           >
-            Inquire About Hosting
+            {t("Inquire About Hosting")}
           </a>
         </motion.div>
       </div>

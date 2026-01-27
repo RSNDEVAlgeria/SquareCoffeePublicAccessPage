@@ -1,9 +1,12 @@
 // made by leyn.cx
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 import heroImage from "@/assets/IMG-20260108-WA0001.jpg";
 import logo from "@/assets/IMG-20260108-WA0004.jpg";
+import { useEffect } from "react";
 
 const HeroSection = () => {
+  const { t } = useTranslation()
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Blurred Background Image */}
@@ -64,7 +67,7 @@ const HeroSection = () => {
             transition={{ duration: 0.8, delay: 1.5 }}
             className="text-xl md:text-2xl text-muted-foreground font-light italic mb-8"
           >
-            "Where every cup tells a story"
+            {t("Where every cup tells a story")}
           </motion.p>
 
           <motion.div
@@ -77,13 +80,13 @@ const HeroSection = () => {
               href="#menu"
               className="inline-flex items-center justify-center px-8 py-4 bg-primary text-primary-foreground font-medium rounded-lg hover:bg-primary/90 transition-all duration-300 hover:scale-105"
             >
-              Explore Menu
+              {t("Explore Menu")}
             </a>
             <a
               href="#contact"
               className="inline-flex items-center justify-center px-8 py-4 border-2 border-foreground/20 text-foreground font-medium rounded-lg hover:bg-foreground/5 transition-all duration-300"
             >
-              Book an Event
+              {t("Book an Event")}
             </a>
           </motion.div>
         </motion.div>

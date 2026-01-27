@@ -1,6 +1,3 @@
-// made by leyn.cx
-import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
 import logo from "@/assets/logo.png";
 
 const Footer = () => {
@@ -53,8 +50,6 @@ const Footer = () => {
         <div className="border-t border-primary-foreground/10 mt-8 pt-8 text-center">
           <p className="text-sm text-primary-foreground/50">
             made by <a href="#" className="hover:text-primary transition-colors">RSN.Dev</a>
-            <span className="mx-2">•</span>
-            <Link to="/login" className="hover:text-primary transition-colors">Admin</Link>
           </p>
         </div>
       </div>

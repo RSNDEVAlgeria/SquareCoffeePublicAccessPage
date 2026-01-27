@@ -3,6 +3,7 @@ import { motion } from "framer-motion"
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { ArrowLeft } from "lucide-react"
+import { useTranslation } from "react-i18next"
 import { Link } from "react-router-dom"
 import { supabasePublic } from "@/lib/supabase"
 
@@ -20,6 +21,7 @@ type UIProduct = Product & {
 
 const Menu = () => {
   const [items, setItems] = useState<UIProduct[]>([])
+  const { t } = useTranslation()
   const [selectedCategory, setSelectedCategory] =
     useState<"All" | "Option2" | "Option1">("All")
   const [loading, setLoading] = useState(true)
@@ -53,7 +55,7 @@ const Menu = () => {
     }
 
     loadProducts()
-  }, [])
+  }, [t])
 
   const filterButtons = [
     { label: "All", value: "All" as const },
@@ -87,10 +89,10 @@ const Menu = () => {
             className="text-center"
           >
             <h1 className="text-4xl md:text-5xl font-display font-bold text-foreground mb-4">
-              Our Menu
+              {t("Menu")}
             </h1>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Discover our carefully curated selection of premium coffees and food
+              {t("Discover our carefully curated selection of premium coffees and food")}
             </p>
           </motion.div>
         </div>
