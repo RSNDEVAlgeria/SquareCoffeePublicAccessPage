@@ -92,7 +92,7 @@ const ContactSection = () => {
                   </div>
                   <div>
                     <h4 className="font-semibold text-foreground mb-1">Phone</h4>
-                    <p className="text-muted-foreground">0552564675</p>
+                    <p className="text-muted-foreground"><a href="tel:0552564675" className="hover:underline">0552564675</a></p>
                   </div>
                 </div>
               </div>
@@ -104,7 +104,7 @@ const ContactSection = () => {
                   </div>
                   <div>
                     <h4 className="font-semibold text-foreground mb-1">Email</h4>
-                    <p className="text-muted-foreground">squarecoffeedem@gmail.com</p>
+                    <p className="text-muted-foreground"><a href="mailto:squarecoffeedem@gmail.com" className="hover:text-primary transition-colors">squarecoffeedem@gmail.com</a></p>
                   </div>
                 </div>
 
@@ -125,7 +125,7 @@ const ContactSection = () => {
             {/* Social Links */}
             <div className="flex flex-wrap justify-center gap-4 py-4">
               <a
-                href="https://www.instagram.com/square_coffee"
+                href="https://www.instagram.com/squar_coffee"
                 target="_blank"
                 rel="noreferrer"
                 className="flex items-center gap-2 px-4 py-2 rounded-xl bg-foreground/5 hover:bg-primary/10 transition-colors group"
@@ -134,7 +134,7 @@ const ContactSection = () => {
                 <span className="text-sm font-medium text-muted-foreground group-hover:text-primary transition-colors">square_coffee</span>
               </a>
               <a
-                href="https://www.facebook.com/search/top?q=Square+Coffee"
+                href="https://www.facebook.com/profile.php?id=61574297446369"
                 target="_blank"
                 rel="noreferrer"
                 className="flex items-center gap-2 px-4 py-2 rounded-xl bg-foreground/5 hover:bg-primary/10 transition-colors group"
