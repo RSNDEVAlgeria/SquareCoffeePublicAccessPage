@@ -1,4 +1,3 @@
-// made by leyn.cx
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
 

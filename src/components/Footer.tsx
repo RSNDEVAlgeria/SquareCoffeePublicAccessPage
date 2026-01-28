@@ -1,6 +1,8 @@
-import logo from "@/assets/logo.png";
+import logo from "@/assets/IMG-20260108-WA0004.jpg";
+import { useTranslation } from "react-i18next";
 
 const Footer = () => {
+  const { t} = useTranslation();
   return (
     <footer className="bg-foreground text-primary-foreground py-12">
       <div className="container-tight section-padding !py-0">
@@ -13,7 +15,7 @@ const Footer = () => {
                 Square Coffee
               </span>
               <p className="text-sm text-primary-foreground/60">
-                Where every cup tells a story
+                {t("Where every cup tells a story")}
               </p>
             </div>
           </div>
@@ -24,25 +26,25 @@ const Footer = () => {
               href="#menu"
               className="text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors"
             >
-              Menu
+              {t("Menu")}
             </a>
             <a
               href="#gallery"
               className="text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors"
             >
-              Gallery
+              {t("Gallery")}
             </a>
             <a
               href="#services"
               className="text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors"
             >
-              Services
+              {t("Services")}
             </a>
             <a
               href="#contact"
               className="text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors"
             >
-              Contact
+              {t("Contact")}
             </a>
           </nav>
         </div>

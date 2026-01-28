@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import heroImage from "@/assets/IMG-20260108-WA0001.jpg";
 import logo from "@/assets/IMG-20260108-WA0004.jpg";
-import { useEffect } from "react";
 
 const HeroSection = () => {
   const { t } = useTranslation()
@@ -37,10 +36,14 @@ const HeroSection = () => {
           className="order-1 lg:order-2"
         >
           <img
-            src={logo}
-            alt="Square Coffee Logo"
-            className="w-48 h-48 md:w-64 md:h-64 lg:w-80 lg:h-80 rounded-full object-cover drop-shadow-2xl"
-          />
+  src={logo}
+  alt="Square Coffee Logo"
+  className="w-48 h-48 md:w-64 md:h-64 lg:w-80 lg:h-80 rounded-full object-cover drop-shadow-2xl"
+  style={{ 
+    filter: "grayscale(1) contrast(200%) brightness(120%)", 
+    mixBlendMode: "multiply" 
+  }}
+/>
         </motion.div>
 
         {/* Text Content - Coming from Left */}
