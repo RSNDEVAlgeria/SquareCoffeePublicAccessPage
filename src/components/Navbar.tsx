@@ -1,4 +1,3 @@
-// made by leyn.cx
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
@@ -37,14 +36,14 @@ const Navbar = () => {
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.8, delay: 2.5 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      className={`fixed top-0 left-0 right-0 w-full z-50 transition-all duration-500 ${
         isScrolled
           ? "bg-background/95 backdrop-blur-md shadow-sm"
           : "bg-transparent"
       }`}
     >
-      <div className="container-tight section-padding !py-4 flex items-center justify-between">
-        <a href="#" className="flex items-center gap-3">
+      <div className="container-tight section-padding !py-4 flex items-center justify-between overflow-hidden">
+        <a href="#" className="flex items-center gap-3 shrink-0">
           <img src={logo} alt="Square Coffee" className="h-10 w-10 rounded-full object-cover" />
           <span className="font-display text-lg font-semibold text-foreground">
             Square Coffee
@@ -92,6 +91,7 @@ const Navbar = () => {
         <button
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           className="md:hidden p-2 text-foreground"
+          aria-label="Toggle menu"
         >
           {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
@@ -103,7 +103,7 @@ const Navbar = () => {
           initial={{ opacity: 0, height: 0 }}
           animate={{ opacity: 1, height: "auto" }}
           exit={{ opacity: 0, height: 0 }}
-          className="md:hidden bg-background/95 backdrop-blur-md border-t border-border"
+          className="md:hidden bg-background/95 backdrop-blur-md border-t border-border overflow-hidden"
         >
           <ul className="container-tight section-padding !py-6 flex flex-col gap-4">
             {navLinks.map((link) => (
@@ -129,7 +129,7 @@ const Navbar = () => {
             ))}
             <li>
               <Select onValueChange={changeLanguage} value={i18n.language}>
-                <SelectTrigger className="w-full bg-transparent border-none text-lg font-medium text-foreground">
+                <SelectTrigger className="w-full bg-transparent border-none text-lg font-medium text-foreground px-0">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>

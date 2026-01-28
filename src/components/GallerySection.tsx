@@ -1,4 +1,3 @@
-// made by leyn.cx
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef, useState } from "react";
@@ -28,7 +27,7 @@ const GallerySection = () => {
 
   return (
     <>
-      <section id="gallery" className="section-padding bg-background" ref={ref}>
+      <section id="gallery" className="section-padding bg-background overflow-hidden" ref={ref}>
         <div className="container-tight">
           {/* Section Header */}
           <motion.div
@@ -50,8 +49,8 @@ const GallerySection = () => {
 
           {/* Gallery */}
           {/* Mobile Carousel */}
-          <div className="md:hidden">
-            <Carousel className="w-full">
+          <div className="md:hidden px-4"> 
+            <Carousel className="w-full max-w-[calc(100vw-2rem)] mx-auto">
               <CarouselContent>
                 {galleryImages.map((image, index) => (
                   <CarouselItem key={index}>
@@ -79,10 +78,11 @@ const GallerySection = () => {
                   </CarouselItem>
                 ))}
               </CarouselContent>
-              <CarouselPrevious />
-              <CarouselNext />
+              {/* Desktop-only navigation to prevent white-side overflow on mobile */}
+              <CarouselPrevious className="hidden md:flex" />
+              <CarouselNext className="hidden md:flex" />
             </Carousel>
-            <p className="text-center text-sm text-muted-foreground mt-2">{t("Swipe to see more")}</p>
+            <p className="text-center text-sm text-muted-foreground mt-4">{t("Swipe to see more")}</p>
           </div>
 
           {/* Desktop Grid */}
@@ -123,7 +123,7 @@ const GallerySection = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 z-50 bg-foreground/90 backdrop-blur-sm flex items-center justify-center p-4"
+          className="fixed inset-0 z-[60] bg-foreground/90 backdrop-blur-sm flex items-center justify-center p-4"
           onClick={() => setSelectedImage(null)}
         >
           <button
@@ -137,7 +137,7 @@ const GallerySection = () => {
             animate={{ scale: 1, opacity: 1 }}
             src={selectedImage}
             alt="Gallery preview"
-            className="max-w-full max-h-[85vh] rounded-lg shadow-2xl"
+            className="max-w-full max-h-[85vh] rounded-lg shadow-2xl object-contain"
           />
         </motion.div>
       )}

@@ -53,7 +53,7 @@ const resources = {
       "Curated Favorites": "المفضلات المختارة",
       "Handcrafted with love": "مصنوعة بحب باستخدام أفضل المكونات وفاصولياء البن الممتازة المصدرة من مزارع مستدامة حول العالم.",
       "View Full Menu with Prices": "عرض القائمة الكاملة مع الأسعار",
-      "A Glimpse Inside": "نظرة خاطفة داخل",
+      "A Glimpse Inside": "لمحة من الداخل",
       "From our cozy reading corners...": "من أركان القراءة المريحة إلى التراس المشمس، كل زاوية مصممة لراحتك.",
       "Swipe to see more": "اسحب لرؤية المزيد",
       "Host Your Moments": "استضف لحظاتك",
