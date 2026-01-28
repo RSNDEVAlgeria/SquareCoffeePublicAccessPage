@@ -40,16 +40,18 @@ const MenuSection = () => {
         console.error("Failed to load products:", error)
       } else if (data) {
         const mapped: UIProduct[] = data
-          .map((p) => ({
-            ...p,
-            categoryLabel:
-              p.type === "Option2"
-                ? t("drinks") // use translation
-                : p.type === "Option1"
-                ? t("food")
-                : t("other"),
-          }))
-          .reverse() // oldest of last 6 first
+          .map((p) => {
+            let label = "Other"
+          if (p.type === "Option3") label = "Sweet Food"
+          if (p.type === "Option1") label = "Salted Food"
+          if (p.type === "Option2") label = "Drink"
+
+            return {
+              ...p,
+              categoryLabel: t(label),
+            }
+          })
+          .reverse() 
 
         setItems(mapped)
       }

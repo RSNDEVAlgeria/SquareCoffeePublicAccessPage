@@ -1,4 +1,3 @@
-// made by leyn.cx
 import { motion } from "framer-motion"
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
@@ -19,11 +18,12 @@ type UIProduct = Product & {
   categoryLabel: string
 }
 
+type CategoryValue = "All" | "Option1" | "Option2" | "Option3"
+
 const Menu = () => {
   const [items, setItems] = useState<UIProduct[]>([])
   const { t } = useTranslation()
-  const [selectedCategory, setSelectedCategory] =
-    useState<"All" | "Option2" | "Option1">("All")
+  const [selectedCategory, setSelectedCategory] = useState<CategoryValue>("All")
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
@@ -38,15 +38,18 @@ const Menu = () => {
       if (error) {
         console.error("Failed to load products:", error)
       } else if (data) {
-        const mapped: UIProduct[] = data.map((p) => ({
-          ...p,
-          categoryLabel:
-            p.type === "Option2"
-              ? "Drinks"
-              : p.type === "Option1"
-              ? "Food"
-              : "Other",
-        }))
+        const mapped: UIProduct[] = data.map((p) => {
+          // Mapping logic using translation keys
+          let label = t("categories.other")
+          if (p.type === "Option3") label = t("Sweet Food")
+          if (p.type === "Option1") label = t("Salted Food")
+          if (p.type === "Option2") label = t("Drink")
+
+          return {
+            ...p,
+            categoryLabel: label,
+          }
+        })
 
         setItems(mapped)
       }
@@ -55,12 +58,14 @@ const Menu = () => {
     }
 
     loadProducts()
-  }, [t])
+  }, [t]) // Included 't' so labels refresh if language changes
 
-  const filterButtons = [
-    { label: "All", value: "All" as const },
-    { label: "Drinks", value: "Option2" as const },
-    { label: "Food", value: "Option1" as const },
+  // Filter buttons using translation keys
+  const filterButtons: { label: string; value: CategoryValue }[] = [
+    { label: t("All"), value: "All" },
+    { label: t("Sweet Food"), value: "Option3" },
+    { label: t("Salted Food"), value: "Option1" },
+    { label: t("Drink"), value: "Option2" },
   ]
 
   const filteredItems =
@@ -77,7 +82,7 @@ const Menu = () => {
             <Button variant="ghost" size="sm" asChild>
               <Link to="/">
                 <ArrowLeft className="w-4 h-4 mr-2" />
-                Back to Home
+                {t("Back to Home")}
               </Link>
             </Button>
           </div>
@@ -101,7 +106,7 @@ const Menu = () => {
       {/* Menu Content */}
       <div className="container-tight section-padding">
         {/* Filter */}
-        <div className="flex justify-center gap-4 mb-8">
+        <div className="flex flex-wrap justify-center gap-4 mb-8">
           {filterButtons.map((b) => (
             <Button
               key={b.value}
@@ -116,7 +121,11 @@ const Menu = () => {
 
         {/* Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-          {!loading &&
+          {loading ? (
+            <div className="col-span-full text-center py-20 text-muted-foreground">
+              {t("Loading...")}
+            </div>
+          ) : (
             filteredItems.map((item, index) => (
               <motion.div
                 key={item.id}
@@ -145,7 +154,8 @@ const Menu = () => {
                   </div>
                 </div>
               </motion.div>
-            ))}
+            ))
+          )}
         </div>
       </div>
     </div>

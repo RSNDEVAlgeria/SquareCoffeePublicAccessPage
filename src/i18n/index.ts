@@ -44,7 +44,11 @@ const resources = {
       "Where every cup tells a story":"Where every cup tells a story",
       "Explore Menu":"Explore Menu",
       "Book an Event":"Book an Event",
-      "Inquire About Hosting":"Inquire About Hosting"
+      "Inquire About Hosting":"Inquire About Hosting",
+      "Sweet Food":"Sweet Food",
+      "Salted Food":"Salted Food",
+      "Drink":"Drink",
+      "All":"All"
     }
   },
   ar: {
@@ -85,7 +89,11 @@ const resources = {
       "Where every cup tells a story":"حيث يحكي كل كوب قصة",
       "Explore Menu":"استكشاف القائمة",
       "Book an Event":"احجز موعدا",
-      "Inquire About Hosting":"استفسر عن خدمات الاستضافة"
+      "Inquire About Hosting":"استفسر عن خدمات الاستضافة",
+      "Sweet Food":"طعام حلو",
+      "Salted Food":"الطعام المملح",
+      "Drink":"مشروبات",
+      "All":"الكل"
     }
   },
   fr: {
@@ -126,7 +134,11 @@ const resources = {
       "Where every cup tells a story":"Là où chaque tasse raconte une histoire",
       "Explore Menu":"Explorer le menu",
       "Book an Event":"Réservez un événement",
-      "Inquire About Hosting":"Renseignez-vous sur les services d'hébergement"
+      "Inquire About Hosting":"Renseignez-vous sur les services d'hébergement",
+      "Sweet Food":"Nourriture sucrée",
+      "Salted Food":"Nourriture salée",
+      "Drink":"Boisson",
+      "All":"Tout"
     }
   }
 };
