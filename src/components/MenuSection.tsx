@@ -1,11 +1,12 @@
-// made by leyn.cx
 import { motion } from "framer-motion"
 import { useState, useEffect, useRef } from "react"
 import { useInView } from "framer-motion"
 import { useTranslation } from "react-i18next"
 import { Button } from "@/components/ui/button"
 import { Link } from "react-router-dom"
-import { supabasePublic } from "@/lib/supabase"
+
+// Worker URL
+const WORKER_URL = "https://square-coffee-cache.squarecoffeedem.workers.dev";
 
 type Product = {
   id: string
@@ -30,33 +31,35 @@ const MenuSection = () => {
     const loadProducts = async () => {
       setLoading(true)
 
-      const { data, error } = await supabasePublic
-        .from("products")
-        .select("id, name, price, type, image_url")
-        .order("id", { ascending: false })
-        .limit(6)
+      try {
+        // Fetch from Worker Cache
+        const response = await fetch(WORKER_URL);
+        if (!response.ok) throw new Error("Worker fetch failed");
+        
+        const data: Product[] = await response.json();
 
-      if (error) {
-        console.error("Failed to load products:", error)
-      } else if (data) {
+        // Map and limit to 6 items (Favorites)
+        // We slice(0, 6) to show only the 6 most recent products
         const mapped: UIProduct[] = data
+          .slice(0, 6) 
           .map((p) => {
             let label = "Other"
-          if (p.type === "Option3") label = "Sweet Food"
-          if (p.type === "Option1") label = "Salted Food"
-          if (p.type === "Option2") label = "Drink"
+            if (p.type === "Option3" || p.type === "Sweet food") label = "Sweet Food"
+            if (p.type === "Option1" || p.type === "Salty food") label = "Salted Food"
+            if (p.type === "Option2" || p.type === "Drink") label = "Drink"
 
             return {
               ...p,
               categoryLabel: t(label),
             }
-          })
-          .reverse() 
+          });
 
         setItems(mapped)
+      } catch (error) {
+        console.error("Failed to load curated products:", error)
+      } finally {
+        setLoading(false)
       }
-
-      setLoading(false)
     }
 
     loadProducts()
@@ -110,7 +113,7 @@ const MenuSection = () => {
                       {item.name}
                     </h3>
                     <span className="text-lg font-semibold text-primary whitespace-nowrap">
-                      {item.price.toFixed(2)} DA
+                      {item.price} DA
                     </span>
                   </div>
                 </div>
