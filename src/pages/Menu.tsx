@@ -4,8 +4,8 @@ import { Button } from "@/components/ui/button"
 import { ArrowLeft } from "lucide-react"
 import { useTranslation } from "react-i18next"
 import { Link } from "react-router-dom"
-import { supabasePublic } from "@/lib/supabase"
 
+const WORKER_URL = "https://square-coffee-cache.squarecoffeedem.workers.dev/";
 type Product = {
   id: number
   name: string
@@ -30,16 +30,16 @@ const Menu = () => {
     const loadProducts = async () => {
       setLoading(true)
 
-      const { data, error } = await supabasePublic
-        .from("products")
-        .select("id, name, price, type, image_url")
-        .order("id")
+      try {
+        // 2. Pull data from Worker Cache instead of Supabase
+        const response = await fetch(WORKER_URL);
+        
+        if (!response.ok) throw new Error("Failed to fetch from cache");
+        
+        const data: Product[] = await response.json();
 
-      if (error) {
-        console.error("Failed to load products:", error)
-      } else if (data) {
+        // 3. Keep your existing mapping logic
         const mapped: UIProduct[] = data.map((p) => {
-          // Mapping logic using translation keys
           let label = t("categories.other")
           if (p.type === "Option3") label = t("Sweet Food")
           if (p.type === "Option1") label = t("Salted Food")
@@ -52,15 +52,17 @@ const Menu = () => {
         })
 
         setItems(mapped)
+      } catch (error) {
+        console.error("Cache load error:", error)
+      } finally {
+        setLoading(false)
       }
-
-      setLoading(false)
     }
 
     loadProducts()
-  }, [t]) // Included 't' so labels refresh if language changes
+  }, [t])
 
-  // Filter buttons using translation keys
+  // Filter buttons logic remains the same
   const filterButtons: { label: string; value: CategoryValue }[] = [
     { label: t("All"), value: "All" },
     { label: t("Sweet Food"), value: "Option3" },
