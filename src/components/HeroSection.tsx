@@ -1,14 +1,14 @@
 // made by leyn.cx
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
-import { Coffee, ArrowRight } from "lucide-react";
+import { Coffee, ArrowRight, ChevronDown } from "lucide-react";
 import heroImage from "@/assets/IMG-20260108-WA0001.jpg";
 import logo from "@/assets/IMG-20260108-WA0004.jpg";
 
 const HeroSection = () => {
   const { t } = useTranslation()
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pb-20 sm:pb-0">
       {/* Enhanced Blurred Background Image with Parallax */}
       <motion.div
         initial={{ scale: 1.05, opacity: 0 }}
@@ -153,24 +153,20 @@ const HeroSection = () => {
         </motion.div>
       </div>
 
-      {/* Enhanced Scroll Indicator */}
+      {/* Enhanced Scroll Indicator - Positioned to avoid buttons on mobile */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, delay: 2.8 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3"
+        className="absolute bottom-4 sm:bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-20"
       >
-        <span className="text-xs text-muted-foreground uppercase tracking-widest">{t("Scroll")}</span>
+        <span className="text-[10px] sm:text-xs text-muted-foreground uppercase tracking-widest hidden sm:block">{t("Scroll")}</span>
         <motion.div
-          animate={{ y: [0, 12, 0] }}
-          transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
-          className="w-7 h-12 border-2 border-foreground/30 rounded-full flex items-start justify-center p-2 bg-background/50 backdrop-blur-sm"
+          animate={{ y: [0, 8, 0] }}
+          transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+          className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-background/80 backdrop-blur-md border border-foreground/20 flex items-center justify-center shadow-lg hover:bg-background hover:shadow-xl transition-all duration-300 cursor-pointer"
         >
-          <motion.div 
-            className="w-1.5 h-3 bg-primary rounded-full"
-            animate={{ opacity: [1, 0.5, 1] }}
-            transition={{ duration: 1.8, repeat: Infinity }}
-          />
+          <ChevronDown className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
         </motion.div>
       </motion.div>
     </section>
