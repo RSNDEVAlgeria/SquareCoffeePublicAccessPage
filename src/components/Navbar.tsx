@@ -44,7 +44,7 @@ const Navbar = () => {
 
   const languages = [
     { code: "en", label: "English", flag: "🇺🇸" },
-    { code: "ar", label: "العربية", flag: "🇸🇦" },
+    { code: "ar", label: "العربية", flag: "🇦🇪" },
     { code: "fr", label: "Français", flag: "🇫🇷" },
   ];
 
