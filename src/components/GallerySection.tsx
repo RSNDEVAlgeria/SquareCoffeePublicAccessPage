@@ -1,7 +1,7 @@
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useInView } from "framer-motion";
-import { useRef, useState } from "react";
-import { X } from "lucide-react";
+import { useRef, useState, useCallback } from "react";
+import { X, ChevronLeft, ChevronRight, ImageIcon } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 
@@ -22,24 +22,64 @@ const galleryImages = [
 const GallerySection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const { t } = useTranslation();
+
+  const selectedImage = selectedImageIndex !== null ? galleryImages[selectedImageIndex] : null;
+
+  const handleNext = useCallback((e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (selectedImageIndex !== null) {
+      setSelectedImageIndex((selectedImageIndex + 1) % galleryImages.length);
+    }
+  }, [selectedImageIndex]);
+
+  const handlePrev = useCallback((e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (selectedImageIndex !== null) {
+      setSelectedImageIndex((selectedImageIndex - 1 + galleryImages.length) % galleryImages.length);
+    }
+  }, [selectedImageIndex]);
+
+  const handleKeyDown = useCallback((e: KeyboardEvent) => {
+    if (selectedImageIndex === null) return;
+    if (e.key === "ArrowRight") handleNext(e as unknown as React.MouseEvent);
+    if (e.key === "ArrowLeft") handlePrev(e as unknown as React.MouseEvent);
+    if (e.key === "Escape") setSelectedImageIndex(null);
+  }, [selectedImageIndex, handleNext, handlePrev]);
+
+  // Add keyboard event listener
+  useState(() => {
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  });
 
   return (
     <>
-      <section id="gallery" className="section-padding bg-background overflow-hidden" ref={ref}>
-        <div className="container-tight">
+      <section id="gallery" className="section-padding bg-gradient-to-b from-background to-card relative overflow-hidden" ref={ref}>
+        {/* Decorative Elements */}
+        <div className="absolute top-20 right-10 w-32 h-32 border border-primary/10 rounded-full" />
+        <div className="absolute bottom-20 left-10 w-48 h-48 border border-primary/10 rounded-full" />
+        
+        <div className="container-tight relative z-10">
           {/* Section Header */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 40 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.9, ease: [0.25, 0.46, 0.45, 0.94] }}
             className="text-center mb-16"
           >
-            <span className="text-sm font-medium text-primary uppercase tracking-widest">
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={isInView ? { opacity: 1, scale: 1 } : {}}
+              transition={{ duration: 0.6 }}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6"
+            >
+              <ImageIcon className="w-4 h-4" />
               Our Space
-            </span>
-            <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground mt-3 mb-4">
+            </motion.div>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground mt-3 mb-4">
               {t("A Glimpse Inside")}
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
@@ -58,19 +98,19 @@ const GallerySection = () => {
                       initial={{ opacity: 0, scale: 0.9 }}
                       animate={isInView ? { opacity: 1, scale: 1 } : {}}
                       transition={{ duration: 0.6, delay: index * 0.1 }}
-                      className="relative overflow-hidden rounded-2xl cursor-pointer group hover:rounded-3xl transition-all duration-500"
-                      onClick={() => setSelectedImage(image.src)}
+                      className="relative overflow-hidden rounded-3xl cursor-pointer group"
+                      onClick={() => setSelectedImageIndex(index)}
                     >
                       <div className="aspect-square overflow-hidden">
                         <img
                           src={image.src}
                           alt={image.alt}
-                          className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-110"
+                          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                         />
                       </div>
-                      <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/20 group-hover:shadow-2xl group-hover:shadow-primary/20 transition-all duration-500 rounded-2xl group-hover:rounded-3xl" />
-                      <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-foreground/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                        <p className="text-primary-foreground text-sm font-medium">
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500" />
+                      <div className="absolute bottom-0 left-0 right-0 p-6 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                        <p className="text-white text-lg font-medium">
                           {image.alt}
                         </p>
                       </div>
@@ -87,29 +127,65 @@ const GallerySection = () => {
 
           {/* Desktop Grid */}
           <div className="hidden md:block">
-            <div className="grid grid-cols-4 gap-4">
+            <div className="grid grid-cols-4 gap-5">
               {galleryImages.map((image, index) => (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  className={`relative overflow-hidden rounded-2xl cursor-pointer group ${image.span} hover:rounded-3xl transition-all duration-500`}
-                  onClick={() => setSelectedImage(image.src)}
+                  initial={{ opacity: 0, y: 50, scale: 0.95 }}
+                  animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
+                  transition={{ duration: 0.7, delay: index * 0.12, ease: [0.25, 0.46, 0.45, 0.94] }}
+                  className={`relative overflow-hidden rounded-3xl cursor-pointer group ${image.span}`}
+                  onClick={() => setSelectedImageIndex(index)}
+                  onMouseEnter={() => setHoveredIndex(index)}
+                  onMouseLeave={() => setHoveredIndex(null)}
                 >
-                  <div className="aspect-square md:aspect-auto md:h-72 overflow-hidden">
-                    <img
+                  <div className="aspect-square md:aspect-auto md:h-80 overflow-hidden">
+                    <motion.img
                       src={image.src}
                       alt={image.alt}
-                      className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-110"
+                      className="w-full h-full object-cover"
+                      animate={{
+                        scale: hoveredIndex === index ? 1.1 : 1,
+                      }}
+                      transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
                     />
                   </div>
-                  <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/20 group-hover:shadow-2xl group-hover:shadow-primary/20 transition-all duration-500 rounded-2xl group-hover:rounded-3xl" />
-                  <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-foreground/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                    <p className="text-primary-foreground text-sm font-medium">
+                  {/* Overlay */}
+                  <motion.div 
+                    className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: hoveredIndex === index ? 1 : 0 }}
+                    transition={{ duration: 0.4 }}
+                  />
+                  {/* Content */}
+                  <motion.div 
+                    className="absolute bottom-0 left-0 right-0 p-6"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ 
+                      opacity: hoveredIndex === index ? 1 : 0,
+                      y: hoveredIndex === index ? 0 : 20 
+                    }}
+                    transition={{ duration: 0.4 }}
+                  >
+                    <p className="text-white text-xl font-semibold">
                       {image.alt}
                     </p>
-                  </div>
+                    <p className="text-white/70 text-sm mt-1">Click to view</p>
+                  </motion.div>
+                  {/* Corner Accent */}
+                  <motion.div
+                    className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center"
+                    initial={{ opacity: 0, scale: 0.5 }}
+                    animate={{ 
+                      opacity: hoveredIndex === index ? 1 : 0,
+                      scale: hoveredIndex === index ? 1 : 0.5
+                    }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 4l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
+                    </svg>
+                  </motion.div>
                 </motion.div>
               ))}
             </div>
@@ -117,30 +193,101 @@ const GallerySection = () => {
         </div>
       </section>
 
-      {/* Lightbox Modal */}
-      {selectedImage && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          className="fixed inset-0 z-[60] bg-foreground/90 backdrop-blur-sm flex items-center justify-center p-4"
-          onClick={() => setSelectedImage(null)}
-        >
-          <button
-            className="absolute top-6 right-6 text-primary-foreground hover:text-primary-foreground/80 transition-colors"
-            onClick={() => setSelectedImage(null)}
+      {/* Enhanced Lightbox Modal */}
+      <AnimatePresence>
+        {selectedImage && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 z-[60] bg-black/95 backdrop-blur-md flex items-center justify-center"
+            onClick={() => setSelectedImageIndex(null)}
           >
-            <X size={32} />
-          </button>
-          <motion.img
-            initial={{ scale: 0.9, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            src={selectedImage}
-            alt="Gallery preview"
-            className="max-w-full max-h-[85vh] rounded-lg shadow-2xl object-contain"
-          />
-        </motion.div>
-      )}
+            {/* Close Button */}
+            <motion.button
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.8 }}
+              className="absolute top-6 right-6 z-10 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors"
+              onClick={() => setSelectedImageIndex(null)}
+            >
+              <X className="w-6 h-6 text-white" />
+            </motion.button>
+
+            {/* Navigation Buttons */}
+            <motion.button
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -20 }}
+              className="absolute left-6 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors"
+              onClick={handlePrev}
+            >
+              <ChevronLeft className="w-6 h-6 text-white" />
+            </motion.button>
+
+            <motion.button
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: 20 }}
+              className="absolute right-6 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors"
+              onClick={handleNext}
+            >
+              <ChevronRight className="w-6 h-6 text-white" />
+            </motion.button>
+
+            {/* Image Container */}
+            <motion.div
+              key={selectedImageIndex}
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="relative max-w-5xl max-h-[80vh] mx-4"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <img
+                src={selectedImage.src}
+                alt={selectedImage.alt}
+                className="max-w-full max-h-[80vh] rounded-xl shadow-2xl object-contain"
+              />
+              {/* Caption */}
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 }}
+                className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent rounded-b-xl"
+              >
+                <p className="text-white text-xl font-semibold text-center">{selectedImage.alt}</p>
+                <p className="text-white/60 text-sm text-center mt-1">
+                  {selectedImageIndex! + 1} / {galleryImages.length}
+                </p>
+              </motion.div>
+            </motion.div>
+
+            {/* Thumbnail Navigation */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 20 }}
+              className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2"
+            >
+              {galleryImages.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setSelectedImageIndex(index);
+                  }}
+                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                    index === selectedImageIndex ? "bg-white w-6" : "bg-white/40 hover:bg-white/60"
+                  }`}
+                />
+              ))}
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 };
