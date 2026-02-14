@@ -55,7 +55,8 @@ const resources = {
        "Open": "Open",
        "24/7": "24/7",
        "Always here for your coffee needs, day and night": "Always here for your coffee needs, day and night",
-       "made with by rsn": "made with by rsn"
+       "made with by rsn": "made with by rsn",
+       "Play Our Games": "Play Our Games"
      }
   },
   ar: {
@@ -107,7 +108,8 @@ const resources = {
        "Open": "مفتوح",
        "24/7": "24/7",
        "Always here for your coffee needs, day and night": "دائماً هنا لحاجات قهوتك، ليلاً ونهاراً",
-       "made with by rsn": "صنع بـ rsn"
+       "made with by rsn": "صنع بـ rsn",
+       "Play Our Games": "العب ألعابنا"
      }
   },
   fr: {
@@ -159,7 +161,8 @@ const resources = {
        "Open": "Ouvert",
        "24/7": "24/7",
        "Always here for your coffee needs, day and night": "Toujours là pour vos besoins en café, jour et nuit",
-       "made with by rsn": "fait avec rsn"
+       "made with by rsn": "fait avec rsn",
+       "Play Our Games": "Jouez à Nos Jeux"
      }
   }
 };

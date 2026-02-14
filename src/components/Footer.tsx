@@ -1,7 +1,7 @@
 import logo from "@/assets/IMG-20260108-WA0004.jpg";
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
-import { Coffee, Heart, ArrowUp, MapPin, Phone, Mail } from "lucide-react";
+import { Coffee, Heart, ArrowUp, MapPin, Phone, Mail, Gamepad2 } from "lucide-react";
 
 const Footer = () => {
   const { t } = useTranslation();
@@ -169,9 +169,21 @@ const Footer = () => {
 
         {/* Bottom Footer */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-sm text-primary-foreground/50 flex items-center gap-1">
-            made with <Heart className="w-4 h-4 text-red-400 fill-red-400" /> by <a href="https://rsndev.netlify.app" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors font-medium">RSN.Dev</a>
-          </p>
+          <div className="flex items-center gap-4">
+            <p className="text-sm text-primary-foreground/50 flex items-center gap-1">
+              made with <Heart className="w-4 h-4 text-red-400 fill-red-400" /> by <a href="https://rsndev.netlify.app" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors font-medium">RSN.Dev</a>
+            </p>
+            <span className="text-primary-foreground/30">|</span>
+            <a 
+              href="https://game.squarecoffee.shop" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 text-sm text-primary-foreground/50 hover:text-primary transition-colors font-medium group"
+            >
+              <Gamepad2 className="w-4 h-4 group-hover:rotate-12 transition-transform" />
+              {t("Play Our Games")}
+            </a>
+          </div>
           
           {/* Back to Top Button */}
           <motion.button
