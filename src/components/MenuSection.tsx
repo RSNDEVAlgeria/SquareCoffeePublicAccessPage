@@ -7,7 +7,7 @@ import { Link } from "react-router-dom"
 import { Sparkles, ArrowUpRight } from "lucide-react"
 
 // Worker URL
-const WORKER_URL = "https://square-coffee-cache.squarecoffeedem.workers.dev";
+const WORKER_URL = "https://assets.squarecoffee.shop";
 
 type Product = {
   id: string
