@@ -77,7 +77,7 @@ const GallerySection = () => {
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6"
             >
               <ImageIcon className="w-4 h-4" />
-              Our Space
+              {t("Our Space")}
             </motion.div>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground mt-3 mb-4">
               {t("A Glimpse Inside")}

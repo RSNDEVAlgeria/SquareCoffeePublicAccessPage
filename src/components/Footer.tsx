@@ -170,7 +170,7 @@ const Footer = () => {
         {/* Bottom Footer */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-sm text-primary-foreground/50 flex items-center gap-1">
-            made with <Heart className="w-4 h-4 text-red-400 fill-red-400" /> by <a href="#" className="hover:text-primary transition-colors font-medium">RSN.Dev</a>
+            made with <Heart className="w-4 h-4 text-red-400 fill-red-400" /> by <a href="https://rsndev.netlify.app" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors font-medium">RSN.Dev</a>
           </p>
           
           {/* Back to Top Button */}
