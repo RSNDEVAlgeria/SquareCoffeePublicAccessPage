@@ -5,7 +5,7 @@ import { ArrowLeft } from "lucide-react"
 import { useTranslation } from "react-i18next"
 import { Link } from "react-router-dom"
 
-const WORKER_URL = "https://square-coffee-cache.squarecoffeedem.workers.dev/";
+const WORKER_URL = "https://assets.squarecoffee.shop";
 type Product = {
   id: number
   name: string
