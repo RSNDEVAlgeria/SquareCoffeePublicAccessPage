@@ -5,7 +5,6 @@ import { ArrowLeft } from "lucide-react"
 import { useTranslation } from "react-i18next"
 import { Link } from "react-router-dom"
 
-const WORKER_URL = "https://square-coffee-cache.squarecoffeedem.workers.dev/";
 type Product = {
   id: number
   name: string
@@ -32,7 +31,7 @@ const Menu = () => {
 
       try {
         // 2. Pull data from Worker Cache instead of Supabase
-        const response = await fetch(WORKER_URL);
+        const response = await fetch('/api');
         
         if (!response.ok) throw new Error("Failed to fetch from cache");
         
