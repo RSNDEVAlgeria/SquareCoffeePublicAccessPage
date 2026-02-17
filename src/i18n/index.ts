@@ -55,11 +55,15 @@ const resources = {
        "Open": "Open",
        "24/7": "24/7",
        "Always here for your coffee needs, day and night": "Always here for your coffee needs, day and night",
-       "made with by rsn": "made with by rsn",
-       "Play Our Games": "Play Our Games"
-     }
-  },
-  ar: {
+"made with by rsn": "made with by rsn",
+        "Play Our Games": "Play Our Games",
+        "gallery1": "Square Coffee Interior",
+        "gallery2": "Cozy Seating Area",
+        "gallery3": "Coffee Corner",
+        "gallery4": "Outdoor Patio"
+      }
+   },
+   ar: {
     translation: {
       "Our Selection": "اختيارنا",
       "Curated Favorites": "المفضلات المختارة",
@@ -108,11 +112,15 @@ const resources = {
        "Open": "مفتوح",
        "24/7": "24/7",
        "Always here for your coffee needs, day and night": "دائماً هنا لحاجات قهوتك، ليلاً ونهاراً",
-       "made with by rsn": "صنع بـ rsn",
-       "Play Our Games": "العب ألعابنا"
-     }
-  },
-  fr: {
+"made with by rsn": "صنع بـ rsn",
+        "Play Our Games": "العب ألعابنا",
+        "gallery1": "داخل سكوور كوفي",
+        "gallery2": "منطقة جلوس مريحة",
+        "gallery3": "ركن القهوة",
+        "gallery4": "التراس الخارجي"
+      }
+   },
+   fr: {
     translation: {
       "Our Selection": "Notre Sélection",
       "Curated Favorites": "Favoris Curatés",
@@ -161,10 +169,14 @@ const resources = {
        "Open": "Ouvert",
        "24/7": "24/7",
        "Always here for your coffee needs, day and night": "Toujours là pour vos besoins en café, jour et nuit",
-       "made with by rsn": "fait avec rsn",
-       "Play Our Games": "Jouez à Nos Jeux"
-     }
-  }
+"made with by rsn": "fait avec rsn",
+        "Play Our Games": "Jouez à Nos Jeux",
+        "gallery1": "Intérieur Square Coffee",
+        "gallery2": "Zone de Siège Confortable",
+        "gallery3": "Coin Café",
+        "gallery4": "Terrasse Extérieure"
+      }
+   }
 };
 
 i18n

@@ -5,18 +5,16 @@ import { X, ChevronLeft, ChevronRight, ImageIcon } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 
-import gallery2 from "@/assets/IMG-20260122-WA0001(1).jpg";
-import gallery4 from "@/assets/IMG-20260122-WA0004.jpg";
-import gallery5 from "@/assets/IMG-20260122-WA0009.jpg";
-import gallery6 from "@/assets/IMG-20260122-WA0011.jpg";
-import gallery7 from "@/assets/IMG-20260122-WA0012(1).jpg";
+import gallery1 from "@/assets/gallery-1.jpg";
+import gallery2 from "@/assets/gallery-2.jpg";
+import gallery3 from "@/assets/gallery-3.jpg";
+import gallery4 from "@/assets/gallery-4.jpg";
 
 const galleryImages = [
-  { src: gallery2, alt: "Coffee Art", span: "md:col-span-2" },
-  { src: gallery4, alt: "Square Coffee Vibes", span: "md:col-span-2" },
-  { src: gallery5, alt: "Delicious Treats", span: "" },
-  { src: gallery6, alt: "Good Times", span: "" },
-  { src: gallery7, alt: "Specialty Brews", span: "md:col-span-2" },
+  { src: gallery1, altKey: "gallery1", span: "md:col-span-2" },
+  { src: gallery2, altKey: "gallery2", span: "md:col-span-2" },
+  { src: gallery3, altKey: "gallery3", span: "" },
+  { src: gallery4, altKey: "gallery4", span: "" },
 ];
 
 const GallerySection = () => {
@@ -104,14 +102,14 @@ const GallerySection = () => {
                       <div className="aspect-square overflow-hidden">
                         <img
                           src={image.src}
-                          alt={image.alt}
+                          alt={t(image.altKey)}
                           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                         />
                       </div>
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500" />
                       <div className="absolute bottom-0 left-0 right-0 p-6 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
                         <p className="text-white text-lg font-medium">
-                          {image.alt}
+                          {t(image.altKey)}
                         </p>
                       </div>
                     </motion.div>
@@ -142,7 +140,7 @@ const GallerySection = () => {
                   <div className="aspect-square md:aspect-auto md:h-80 overflow-hidden">
                     <motion.img
                       src={image.src}
-                      alt={image.alt}
+                      alt={t(image.altKey)}
                       className="w-full h-full object-cover"
                       animate={{
                         scale: hoveredIndex === index ? 1.1 : 1,
@@ -168,7 +166,7 @@ const GallerySection = () => {
                     transition={{ duration: 0.4 }}
                   >
                     <p className="text-white text-xl font-semibold">
-                      {image.alt}
+                      {t(image.altKey)}
                     </p>
                     <p className="text-white/70 text-sm mt-1">Click to view</p>
                   </motion.div>
