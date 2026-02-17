@@ -41,15 +41,23 @@ const resources = {
       "Drinks": "Drinks",
       "Food": "Food",
       "Discover our carefully curated selection of premium coffees and food":"Discover our carefully curated selection of premium coffees and food",
-      "Where every cup tells a story":"Where every cup tells a story",
-      "Explore Menu":"Explore Menu",
+       "Where every cup tells a story":"Where every cup tells a story",
+       "Premium Coffee Experience": "Premium Coffee Experience",
+       "Explore Menu":"Explore Menu",
       "Book an Event":"Book an Event",
       "Inquire About Hosting":"Inquire About Hosting",
-      "Sweet Food":"Sweet Food",
-      "Salted Food":"Salted Food",
-      "Drink":"Drink",
-      "All":"All"
-    }
+       "Sweet Food":"Sweet Food",
+       "Salted Food":"Salted Food",
+       "Drink":"Drink",
+       "All":"All",
+       "Our Space": "Our Space",
+       "What We Offer": "What We Offer",
+       "Open": "Open",
+       "24/7": "24/7",
+       "Always here for your coffee needs, day and night": "Always here for your coffee needs, day and night",
+       "made with by rsn": "made with by rsn",
+       "Play Our Games": "Play Our Games"
+     }
   },
   ar: {
     translation: {
@@ -86,15 +94,23 @@ const resources = {
       "Drinks": "المشروبات",
       "Food": "المأكولات",
       "Discover our carefully curated selection of premium coffees and food":"اكتشف مجموعتنا المختارة بعناية من أجود أنواع القهوة والأطعمة",
-      "Where every cup tells a story":"حيث يحكي كل كوب قصة",
-      "Explore Menu":"استكشاف القائمة",
+       "Where every cup tells a story":"حيث يحكي كل كوب قصة",
+       "Premium Coffee Experience": "تجربة قهوة متميزة",
+       "Explore Menu":"استكشاف القائمة",
       "Book an Event":"احجز موعدا",
       "Inquire About Hosting":"استفسر عن خدمات الاستضافة",
-      "Sweet Food":"طعام حلو",
-      "Salted Food":"الطعام المملح",
-      "Drink":"مشروبات",
-      "All":"الكل"
-    }
+       "Sweet Food":"طعام حلو",
+       "Salted Food":"الطعام المملح",
+       "Drink":"مشروبات",
+       "All":"الكل",
+       "Our Space": "مساحتنا",
+       "What We Offer": "ما نقدمه",
+       "Open": "مفتوح",
+       "24/7": "24/7",
+       "Always here for your coffee needs, day and night": "دائماً هنا لحاجات قهوتك، ليلاً ونهاراً",
+       "made with by rsn": "صنع بـ rsn",
+       "Play Our Games": "العب ألعابنا"
+     }
   },
   fr: {
     translation: {
@@ -131,15 +147,23 @@ const resources = {
       "Drinks": "Boissons",
       "Food": "Nourriture",
       "Discover our carefully curated selection of premium coffees and food":"Découvrez notre sélection soigneusement choisie de cafés et de produits alimentaires haut de gamme.",
-      "Where every cup tells a story":"Là où chaque tasse raconte une histoire",
-      "Explore Menu":"Explorer le menu",
+       "Where every cup tells a story":"Là où chaque tasse raconte une histoire",
+       "Premium Coffee Experience": "Expérience Café Premium",
+       "Explore Menu":"Explorer le menu",
       "Book an Event":"Réservez un événement",
       "Inquire About Hosting":"Renseignez-vous sur les services d'hébergement",
-      "Sweet Food":"Nourriture sucrée",
-      "Salted Food":"Nourriture salée",
-      "Drink":"Boisson",
-      "All":"Tout"
-    }
+       "Sweet Food":"Nourriture sucrée",
+       "Salted Food":"Nourriture salée",
+       "Drink":"Boisson",
+       "All":"Tout",
+       "Our Space": "Notre Espace",
+       "What We Offer": "Ce Que Nous Offrons",
+       "Open": "Ouvert",
+       "24/7": "24/7",
+       "Always here for your coffee needs, day and night": "Toujours là pour vos besoins en café, jour et nuit",
+       "made with by rsn": "fait avec rsn",
+       "Play Our Games": "Jouez à Nos Jeux"
+     }
   }
 };
 
