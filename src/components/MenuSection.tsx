@@ -6,9 +6,6 @@ import { Button } from "@/components/ui/button"
 import { Link } from "react-router-dom"
 import { Sparkles, ArrowUpRight } from "lucide-react"
 
-// Worker URL
-const WORKER_URL = "https://assets.squarecoffee.shop";
-
 type Product = {
   id: string
   name: string
@@ -35,7 +32,7 @@ const MenuSection = () => {
 
       try {
         // Fetch from Worker Cache
-        const response = await fetch(WORKER_URL);
+        const response = await fetch('/api');
         if (!response.ok) throw new Error("Worker fetch failed");
         
         const data: Product[] = await response.json();
