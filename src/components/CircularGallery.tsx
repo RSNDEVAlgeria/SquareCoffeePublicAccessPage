@@ -718,6 +718,17 @@ export default function CircularGallery({
   }, [uniqueItems.length]);
 
   useEffect(() => {
+    if (selectedIndex !== null) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [selectedIndex]);
+
+  useEffect(() => {
     if (!containerRef.current) return;
     const app = new App(containerRef.current, {
       items,
