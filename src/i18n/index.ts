@@ -60,7 +60,8 @@ const resources = {
         "gallery1": "Square Coffee Interior",
         "gallery2": "Cozy Seating Area",
         "gallery3": "Coffee Corner",
-        "gallery4": "Outdoor Patio"
+        "gallery4": "Outdoor Patio",
+        "Play Now": "Play Now"
       }
    },
    ar: {
@@ -117,7 +118,8 @@ const resources = {
         "gallery1": "داخل سكوور كوفي",
         "gallery2": "منطقة جلوس مريحة",
         "gallery3": "ركن القهوة",
-        "gallery4": "التراس الخارجي"
+        "gallery4": "التراس الخارجي",
+        "Play Now": "العب الآن"
       }
    },
    fr: {
@@ -174,7 +176,8 @@ const resources = {
         "gallery1": "Intérieur Square Coffee",
         "gallery2": "Zone de Siège Confortable",
         "gallery3": "Coin Café",
-        "gallery4": "Terrasse Extérieure"
+        "gallery4": "Terrasse Extérieure",
+        "Play Now": "Jouer Maintenant"
       }
    }
 };
