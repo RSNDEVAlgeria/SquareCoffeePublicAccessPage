@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Globe, Coffee, ChevronDown, ArrowRight } from "lucide-react";
+import { Menu, X, Globe, Coffee, ChevronDown, ArrowRight, Gamepad2 } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { Link, useLocation } from "react-router-dom";
 import logo from "@/assets/IMG-20260108-WA0004.jpg";
@@ -189,6 +189,19 @@ const Navbar = () => {
               </AnimatePresence>
             </div>
 
+{/* Play Now Button */}
+            <motion.a
+              href="https://game.squarecoffee.shop"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="flex items-center gap-2 px-4 py-2.5 bg-gradient-to-r from-violet-600 to-indigo-600 text-white text-sm font-semibold rounded-full shadow-lg shadow-violet-500/25 hover:shadow-xl hover:shadow-violet-500/30 transition-all duration-300"
+            >
+              <Gamepad2 className="w-4 h-4" />
+              {t("Play Now")}
+            </motion.a>
+
             {/* CTA Button */}
             <motion.a
               href="#contact"
@@ -325,6 +338,21 @@ const Navbar = () => {
                     ))}
                   </div>
                 </div>
+
+                {/* Play Now */}
+                <motion.a
+                  href="https://game.squarecoffee.shop"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.3 }}
+                  className="flex items-center justify-center gap-2 mt-4 px-6 py-4 bg-gradient-to-r from-violet-600 to-indigo-600 text-white font-semibold rounded-xl shadow-lg"
+                >
+                  <Gamepad2 className="w-5 h-5" />
+                  {t("Play Now")}
+                </motion.a>
 
                 {/* CTA */}
                 <motion.a
