@@ -189,7 +189,7 @@ const Navbar = () => {
               </AnimatePresence>
             </div>
 
-{/* Play Now Button */}
+{/* Play Our Games Button */}
             <motion.a
               href="https://game.squarecoffee.shop"
               target="_blank"
@@ -199,7 +199,7 @@ const Navbar = () => {
               className="flex items-center gap-2 px-4 py-2.5 bg-gradient-to-r from-violet-600 to-indigo-600 text-white text-sm font-semibold rounded-full shadow-lg shadow-violet-500/25 hover:shadow-xl hover:shadow-violet-500/30 transition-all duration-300"
             >
               <Gamepad2 className="w-4 h-4" />
-              {t("Play Now")}
+                  {t("Play Our Games")}
             </motion.a>
 
             {/* CTA Button */}
@@ -339,7 +339,7 @@ const Navbar = () => {
                   </div>
                 </div>
 
-                {/* Play Now */}
+                {/* Play Our Games */}
                 <motion.a
                   href="https://game.squarecoffee.shop"
                   target="_blank"
@@ -351,7 +351,7 @@ const Navbar = () => {
                   className="flex items-center justify-center gap-2 mt-4 px-6 py-4 bg-gradient-to-r from-violet-600 to-indigo-600 text-white font-semibold rounded-xl shadow-lg"
                 >
                   <Gamepad2 className="w-5 h-5" />
-                  {t("Play Now")}
+              {t("Play Our Games")}
                 </motion.a>
 
                 {/* CTA */}

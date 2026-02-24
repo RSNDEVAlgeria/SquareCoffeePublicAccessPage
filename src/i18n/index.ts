@@ -61,7 +61,6 @@ const resources = {
       "gallery2": "Cozy Seating Area",
       "gallery3": "Coffee Corner",
       "gallery4": "Outdoor Patio",
-      "Play Now": "Play Now"
     }
   },
   ar: {
@@ -119,7 +118,6 @@ const resources = {
       "gallery2": "منطقة جلوس مريحة",
       "gallery3": "ركن القهوة",
       "gallery4": "التراس الخارجي",
-      "Play Now": "العب الآن"
     }
   },
   fr: {
@@ -177,7 +175,6 @@ const resources = {
       "gallery2": "Zone de Siège Confortable",
       "gallery3": "Coin Café",
       "gallery4": "Terrasse Extérieure",
-      "Play Now": "Jouer Maintenant"
     }
   }
 };
