@@ -1,0 +1,19 @@
+name: Supabase Daily Keep-Alive
+
+on:
+  schedule:
+    # Runs at 00:00 UTC every single day
+    - cron: '0 0 * * *'
+  workflow_dispatch: 
+
+jobs:
+  ping_supabase:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send Heartbeat Request
+        run: |
+          # We use -f to fail the script if the HTTP code is 400+
+          # We use -I to fetch headers only (less bandwidth, still counts as activity)
+          curl -f -I -X GET "${{ secrets.SUPABASE_URL }}/rest/v1/products?select=id&limit=1" \
+          -H "apikey: ${{ secrets.SUPABASE_ANON_KEY }}" \
+          -H "Authorization: Bearer ${{ secrets.SUPABASE_ANON_KEY }}"
