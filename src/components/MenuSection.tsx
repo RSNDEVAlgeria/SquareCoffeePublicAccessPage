@@ -40,7 +40,7 @@ const MenuSection = () => {
         // Map and limit to 6 items (Favorites)
         // We slice(0, 6) to show only the 6 most recent products
         const mapped: UIProduct[] = data
-          .slice(0, 6) 
+          .slice(0, 3) 
           .map((p) => {
             let label = "Other"
             if (p.type === "Option3" || p.type === "Sweet food") label = "Sweet Food"
