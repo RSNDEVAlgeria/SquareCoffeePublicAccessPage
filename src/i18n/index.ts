@@ -103,7 +103,7 @@ const resources = {
       "Premium Coffee Experience": "تجربة قهوة متميزة",
       "Explore Menu": "استكشاف القائمة",
       "Book an Event": "احجز موعدا",
-      "Inquire About Hosting": "استفسر عن خدمات الاستضافة",
+      "Inquire About Hosting": " اتصل بنا",
       "Sweet Food": "طعام حلو",
       "Salted Food": "الطعام المملح",
       "Drink": "مشروبات",
